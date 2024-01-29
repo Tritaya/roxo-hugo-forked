@@ -8,6 +8,12 @@
   {{ with .Site.Params.author }}
   <meta name="author" content="{{ . }}">
   {{ end }}
+  {{ if .IsHome}}
+    {{ with .Site.Params.description }}
+  <meta name="description" content="{{ . }}">
+    {{ end }}
+  {{ end }}
+	
   {{ hugo.Generator }}
 
   {{ "<!-- Bootstrap -->" | safeHTML }}
