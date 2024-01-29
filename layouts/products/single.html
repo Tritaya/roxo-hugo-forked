@@ -18,15 +18,15 @@
 			<img src="{{ . }}" alt="{{ $.Title }} {{ $.Site.Params.brandnameshort }}" title="{{ $.Title }} {{ $.Site.Params.brandnameshort }}">
             {{ end }}
           </div>
-          {{ if .NextInSection }}
+          {{ if .PrevInSection }}
           <div class="site-project-single-action">
-            <a href="{{.NextInSection.Permalink}}">
+            <a href="{{.PrevInSection.Permalink}}">
               <span class="link-area">
                 <span data-text="Next">
                   Next
                 </span>
               </span>
-              <img src="{{ "images/to-top.svg" | absURL }}" alt="next {{.Site.Params.brandname2}} item" title="{{.NextInSection.Title}} | {{.Site.Params.brandname2}}">
+              <img src="{{ "images/to-top.svg" | absURL }}" alt="next {{.Site.Params.brandname2}} item" title="{{.PrevInSection.Title}} | {{.Site.Params.brandname2}}">
             </a>
           </div>
           {{ end }}
