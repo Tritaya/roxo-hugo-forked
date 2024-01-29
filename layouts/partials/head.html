@@ -12,6 +12,14 @@
     {{ with .Site.Params.description }}
   <meta name="description" content="{{ . }}">
     {{ end }}
+  {{ else }}
+    {{ with .Params.description }}
+  <meta name="description" content="{{ . }}">
+    {{ else }}
+	  {{ with .Summary }}
+  <meta name="description" content="{{ . }}">
+      {{ end }}
+    {{ end }}
   {{ end }}
 	
   {{ hugo.Generator }}
