@@ -13,7 +13,9 @@
           </div>
           <div class="site-project-single-image">
             {{ range .Params.project_images }}
-            <img src="{{ . | absURL }}" alt="{{ $.Title }} {{ $.Site.Params.brandnameshort }}" title="{{ $.Title }} {{ $.Site.Params.brandnameshort }}">
+           
+		   <!-- it was . | absURL  -->
+			<img src="{{ . }}" alt="{{ $.Title }} {{ $.Site.Params.brandnameshort }}" title="{{ $.Title }} {{ $.Site.Params.brandnameshort }}">
             {{ end }}
           </div>
           {{ if .NextInSection }}
