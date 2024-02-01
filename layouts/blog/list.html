@@ -17,11 +17,12 @@
   <div class="container">
     <div class="row">
       {{ range (.Paginator 4).Pages }}
+	  {{ $page := .}}
       <div class="col-lg-6">
         <article class="site-blog-post">
           {{ with .Params.image }}
           <div class="site-blog-post-thumb">
-            <img src="{{ . | absURL }}" alt="post-thumb">
+            <img src="{{ . | absURL }}" alt="{{$page.Title}} - {{$.Site.Params.brandname_official_website}}" title="{{$page.Title}}">
           </div>
           {{ end }}
           <div class="site-blog-post-content">
@@ -30,7 +31,7 @@
             <p>
               {{ .Summary }} ...
             </p>
-            <a href="{{ .Permalink }}" class="read-more">{{ .Site.Params.blog.read_more }}</a>
+            <a href="{{ .Permalink }}" class="read-more" title="Article: {{ $page.Title }}">{{ .Site.Params.blog.read_more }}</a>
           </div>
         </article>
       </div>
