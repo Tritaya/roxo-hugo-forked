@@ -9,6 +9,7 @@
         <div class="site-footer-widget">
           <h4 class="site-footer-widget-title">{{ .title }}</h4>
           <p class="site-footer-widget-description">
+
 	    {{ if .address }}
               {{ .address | safeHTML }}
 	      <br>
@@ -20,6 +21,11 @@
 	    {{ if .email }}
               <a href="mailto:{{ .email }}">{{ .email }}</a>
 	    {{ end }}
+	    {{ if .aff_notice }}
+	      <br>
+              {{ .aff_notice | safeHTML }}
+	      <br>
+	    {{ end }}		
           </p>
         </div>
       </div>
