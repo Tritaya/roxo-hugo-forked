@@ -255,3 +255,39 @@
     }
   }
 }
+
+// ✅ added this to style a tags around images
+.site-project-single-image-affiliated {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; // Ensures that there is space between the two images if not using margin directly
+  position: relative; // ✅✅ added for check price
+
+  a {
+    width: 48%; // Same as your images were before
+    display: block; // Ensures the anchor behaves as a block-level element
+    margin-bottom: 30px; // Optional, for spacing between rows
+	  position: relative; // ✅✅ added for check price
+    &:nth-child(2n) {
+      margin-left: 4%; // Adjust based on your layout needs
+    }
+  }
+  
+   .check-price {
+      position: absolute;
+      bottom: 10px; // Adjust as needed to position the text
+      right: 10px; // Adjust as needed
+      background-color: chartreuse;
+      padding: 5px 10px;
+      color: black; // Choose color based on your design
+      font-weight: bold;
+      text-transform: uppercase; // Stylistic choice for the button-like text
+      z-index: 2; // Ensure it's above the image
+    }
+	
+  img {
+    width: 100%;
+    display: block; // Ensure images take up the entire width of the <a> tag
+    height: auto;
+  }
+}

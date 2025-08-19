@@ -5,17 +5,24 @@
     <div class="row">
       <div class="col-lg-8 mx-auto">
         <div class="site-project-single">
-          <h1>
-            {{ .Title }}
-          </h1>
+          <h1>{{ .Title }}</h1>
           <div class="site-project-single-description">
             {{ .Content }}
           </div>
-          <div class="site-project-single-image">
+          <div class="site-project-single-image {{ if and (isset $.Site.Params "amazon_tag") (ne $.Site.Params.amazon_tag "") }}site-project-single-image-affiliated{{ end }}">
             {{ range .Params.project_images }}
            
-		   <!-- it was . | absURL  -->
-			<img src="{{ . }}" alt="{{ $.Title }} {{ $.Site.Params.brandnameshort }}" title="{{ $.Title }} {{ $.Site.Params.brandnameshort }}">
+		   {{ if and (isset $.Site.Params "amazon_tag") (ne $.Site.Params.amazon_tag "") }}
+		     <!-- Apply affiliate link when amazon_tag exists and is not empty -->
+		     {{ $afflink := print $.Title " " $.Site.Params.brandname2}}
+			 <a href="https://www.amazon.com/s?k={{$afflink}}&tag={{$.Site.Params.amazon_tag}}" target="_blank">
+			   <img src="{{ . }}" alt="{{ $.Title }} {{ $.Site.Params.brandnameshort }}" title="{{ $.Title }} {{ $.Site.Params.brandnameshort }}">
+			   <span class="check-price">Check Price</span>
+			 </a>
+		   {{ else }}
+		     <!-- Just show the image without affiliate link when amazon_tag is not set or empty -->
+			 <img src="{{ . }}" alt="{{ $.Title }} {{ $.Site.Params.brandnameshort }}" title="{{ $.Title }} {{ $.Site.Params.brandnameshort }}">
+		   {{ end }}
             {{ end }}
           </div>
           {{ if .PrevInSection }}
